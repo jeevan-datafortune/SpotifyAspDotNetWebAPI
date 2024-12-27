@@ -71,5 +71,10 @@ namespace SpotifyAPI.DAL
             _dbContext.User.Update(usr);
             return user;
         }
+        public bool IsUserExists(string email, int id)
+        {
+            var user =this._dbContext.User.Where(x=>x.Email.ToLower()==email.ToLower() && x.Id!=id).FirstOrDefault();
+            return user != null;
+        }
     }
 }

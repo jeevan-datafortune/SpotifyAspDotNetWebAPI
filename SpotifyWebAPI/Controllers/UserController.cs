@@ -24,21 +24,28 @@ namespace SpotifyWebAPI.Controllers
         [HttpGet("GetById/{id}")]      
         public IActionResult GetUser(int id)
         {
+            if (id <= 0) { throw new UserException("User not found"); }
             return Ok(this._userService.GetUser(id));
         }
 
         [HttpPost("Create")]       
         public IActionResult Create(UserModel model)
         {
-            model.CreatedDate = DateTime.Now;
+            if (this._userService.IsUserExists(model.Email, model.Id))
+                throw new UserException("Email already exists");
+            model.CreatedDate = DateTime.Now;            
             return Ok(this._userService.Create(model));
         }
 
         [HttpPost("Update")]       
         public IActionResult Update(UserModel model)
         {
+            if (this._userService.IsUserExists(model.Email, model.Id))
+                throw new UserException("Email already exists");
+
             model.CreatedDate = DateTime.Now;
             return Ok(this._userService.Update(model));
         }
     }
+   
 }

@@ -15,4 +15,9 @@ namespace SpotifyAPI.DAL.Models
         public DateTime? CreatedDate { get; set; }
 
     }
+
+    public class UserException : Exception
+    {
+        public UserException(string message) : base(message) { }
+    }
 }

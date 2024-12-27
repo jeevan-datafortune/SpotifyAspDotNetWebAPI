@@ -293,22 +293,6 @@
   },
   {
     "ContainingType": "SpotifyWebAPI.Controllers.SongsController",
-    "Method": "CheckSongExistsinPlayList",
-    "RelativePath": "api/Songs/SongExistsInPlayList",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "song",
-        "Type": "SpotifyAPI.DAL.Models.PlaylistSongModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SpotifyWebAPI.Controllers.SongsController",
     "Method": "Update",
     "RelativePath": "api/Songs/Update",
     "HttpMethod": "PUT",

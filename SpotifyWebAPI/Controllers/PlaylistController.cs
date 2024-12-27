@@ -12,23 +12,29 @@ namespace SpotifyWebAPI.Controllers
     public class PlaylistController : ControllerBase
     {
         private readonly IPlaylistService _playlistService;
-        public PlaylistController(IPlaylistService playlistService)=>_playlistService = playlistService;
+        public PlaylistController(IPlaylistService playlistService) => _playlistService = playlistService;
 
         [HttpGet("GetUserPlayLists/{userid}")]
         public IActionResult GetUserPlayLists(int userid)
         {
+            if (userid <= 0)
+                throw new PlaylistException("User not found");
+
             return Ok(this._playlistService.GetAll(userid));
         }
 
         [HttpGet("GetById/{id}")]
         public IActionResult GetById(int id)
         {
+            if (id <= 0)
+                throw new PlaylistException("Playlist not found");
+
             return Ok(this._playlistService.Get(id));
         }
 
         [HttpPost("Create")]
         public IActionResult Create(PlaylistModel model)
-        {            
+        {
             return Ok(this._playlistService.Create(model));
         }
 
@@ -41,6 +47,9 @@ namespace SpotifyWebAPI.Controllers
         [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0 || this.GetById(id) == null)
+                throw new PlaylistException("Playlist not found");
+
             return Ok(this._playlistService.Delete(id));
         }
 

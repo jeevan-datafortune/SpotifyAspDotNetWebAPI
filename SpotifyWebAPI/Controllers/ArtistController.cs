@@ -22,6 +22,8 @@ namespace SpotifyWebAPI.Controllers
         [HttpGet("Get/{id}")]
         public IActionResult Get(int id)
         {
+            if (id <= 0)
+                throw new ArtistException("Artist not found");
             return Ok(this._artistService.GetById(id));
         }
 
@@ -40,6 +42,9 @@ namespace SpotifyWebAPI.Controllers
         [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0 || this.Get(id) == null)
+                throw new ArtistException("Artist not found");
+          
             return Ok(this._artistService.Delete(id));
         }
     }

@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SpotifyAPI.DAL.Data;
 using Microsoft.OpenApi.Models;
+using SpotifyWebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,6 +87,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
 app.Run();

@@ -19,4 +19,8 @@ namespace SpotifyAPI.DAL.Models
         public int? Duration { get; set; }
 
     }
+    public class PlaylistException : Exception
+    {
+        public PlaylistException(string message) : base(message) { }
+    }
 }

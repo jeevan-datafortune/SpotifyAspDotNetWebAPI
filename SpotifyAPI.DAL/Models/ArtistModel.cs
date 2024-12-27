@@ -11,4 +11,9 @@ namespace SpotifyAPI.DAL.Models
         public int? Id { get; set; }
         public string? Name { get; set; }
     }
+
+    public class ArtistException : Exception
+    {
+        public ArtistException(string message) : base(message) { }
+    }
 }

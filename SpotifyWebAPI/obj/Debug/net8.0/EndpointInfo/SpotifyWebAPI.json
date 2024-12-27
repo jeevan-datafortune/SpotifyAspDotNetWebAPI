@@ -523,37 +523,6 @@
         }
       }
     },
-    "/api/Songs/SongExistsInPlayList": {
-      "post": {
-        "tags": [
-          "Songs"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaylistSongModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaylistSongModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaylistSongModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/User/GetAllUsers": {
       "post": {
         "tags": [

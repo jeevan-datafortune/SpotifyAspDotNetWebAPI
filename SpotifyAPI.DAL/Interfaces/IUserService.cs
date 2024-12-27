@@ -8,5 +8,6 @@ namespace SpotifyAPI.DAL.Interfaces
         UserModel? Update(UserModel user);
         UserModel? GetUser(int id);
         IEnumerable<UserModel> GetAllUsers();
+        bool IsUserExists(string email, int id);
     }
 }

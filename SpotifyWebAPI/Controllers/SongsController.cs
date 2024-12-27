@@ -29,6 +29,8 @@ namespace SpotifyWebAPI.Controllers
         [HttpGet("Get/{id}")]
         public IActionResult Get(int id)
         {
+            if (id <= 0)
+                throw new SongException("Song not found");
             return Ok(this._songService.Get(id));
         }
 
@@ -47,12 +49,19 @@ namespace SpotifyWebAPI.Controllers
         [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
+            if (id <= 0 || this.Get(id) == null)
+                throw new SongException("Song not found");
+
             return Ok(this._songService.Delete(id));
         }
 
         [HttpPost("AddToPlayList")]
         public IActionResult AddToPlayList(PlaylistSongModel song)
         {
+            bool isExists = this._songService.CheckSongExistsinPlayList(song);
+            if (isExists)
+                throw new SongException("Song already exists in playlist");
+
             return Ok(this._songService.AddToPlayList(song));
         }
 
@@ -62,11 +71,7 @@ namespace SpotifyWebAPI.Controllers
             return Ok(this._songService.RemoveFromPlayList(song));
         }
 
-        [HttpPost("SongExistsInPlayList")]
-        public IActionResult CheckSongExistsinPlayList(PlaylistSongModel song)
-        {
-            return Ok(this._songService.CheckSongExistsinPlayList(song));
-        }
+      
 
     }
 }

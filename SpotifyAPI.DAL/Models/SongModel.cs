@@ -19,4 +19,8 @@ namespace SpotifyAPI.DAL.Models
         public List<ArtistModel>? Artists { get; set; }
 
     }
+    public class SongException : Exception
+    {
+        public SongException(string message) : base(message) { }
+    }
 }
