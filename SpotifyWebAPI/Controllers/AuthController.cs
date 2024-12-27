@@ -18,12 +18,13 @@ namespace SpotifyWebAPI.Controllers
             var response = this._authService.ValidateLogin(model);
             if (response.IsSuccess)
             {
-                var token = this._authService.GetToken(model.UserName);
-                var refreshToken = this._authService.GenerateRefreshToken();
-                _refreshTokens[model.UserName] = refreshToken;
-                return Ok(new { Token = token, RefreshToken = refreshToken });
+                response.Token = this._authService.GetToken(model.UserName);
+                response.RefreshToken = this._authService.GenerateRefreshToken();
+                _refreshTokens[model.UserName] = response.RefreshToken;
+                response.ExpiresIn = DateTime.Now.AddHours(1);
+                return Ok(response);
             }
-            return Unauthorized();
+            return Ok(response);
         }
 
         [HttpPost("RefreshToken")]
@@ -34,9 +35,15 @@ namespace SpotifyWebAPI.Controllers
                 var token = this._authService.GetToken(model.UserName);
                 var refreshToken = this._authService.GenerateRefreshToken();
                 _refreshTokens[model.UserName] = refreshToken;
-                return Ok(new { Token = token, RefreshToken = refreshToken });
+                var response = new AuthResponse
+                {
+                    Token = token,
+                    RefreshToken = refreshToken,
+                    ExpiresIn = DateTime.Now.AddHours(1)
+                };
+                return Ok(response);
             }
-            return Ok(new { Token = "", RefreshToken = "" });
+            return Ok(null);
         }
     }
 }

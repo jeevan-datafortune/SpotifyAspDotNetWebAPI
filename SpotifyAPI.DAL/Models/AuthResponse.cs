@@ -11,5 +11,7 @@ namespace SpotifyAPI.DAL.Models
         public bool IsSuccess { get; set; }
         public UserModel? User { get; set; }
         public string? Token { get; set; }
+        public string? RefreshToken { get; set; }
+        public DateTime? ExpiresIn { get; set; }
     }
 }

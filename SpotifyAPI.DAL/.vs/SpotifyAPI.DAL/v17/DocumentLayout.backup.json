@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C568E43-D010-46EF-8519-1120D4782714}|..\\SpotifyWebAPI\\SpotifyWebAPI.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifywebapi\\controllers\\songscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8C568E43-D010-46EF-8519-1120D4782714}|..\\SpotifyWebAPI\\SpotifyWebAPI.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifywebapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,14 +18,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SongsController.cs",
-              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\SongsController.cs",
-              "RelativeDocumentMoniker": "..\\SpotifyWebAPI\\Controllers\\SongsController.cs",
-              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\SongsController.cs",
-              "RelativeToolTip": "..\\SpotifyWebAPI\\Controllers\\SongsController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAuwEIAAAA9AAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\SpotifyWebAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\SpotifyWebAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T10:19:18.086Z",
+              "WhenOpened": "2024-12-27T12:46:00.37Z",
               "EditorCaption": ""
             }
           ]

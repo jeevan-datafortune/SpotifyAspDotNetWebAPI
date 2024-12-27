@@ -1,0 +1,32 @@
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .input-wrapper input {
+    width: 100%;
+    padding-right: 30px; /* Make space for the clear button */
+    padding-left: 10px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+  }
+  .clear-btn:hover {
+    color: #555;
+  }
+  .error{
+    font-size: 12px;
+  }
+  .nav-link{
+    text-transform: capitalize;
+  }

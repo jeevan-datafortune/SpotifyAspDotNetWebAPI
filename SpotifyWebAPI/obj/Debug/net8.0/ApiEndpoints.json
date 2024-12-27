@@ -139,8 +139,8 @@
   },
   {
     "ContainingType": "SpotifyWebAPI.Controllers.PlaylistController",
-    "Method": "GetById",
-    "RelativePath": "api/Playlist/GetById/{id}",
+    "Method": "Get",
+    "RelativePath": "api/Playlist/Get/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -325,18 +325,8 @@
   },
   {
     "ContainingType": "SpotifyWebAPI.Controllers.UserController",
-    "Method": "GetAllUsers",
-    "RelativePath": "api/User/GetAllUsers",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SpotifyWebAPI.Controllers.UserController",
-    "Method": "GetUser",
-    "RelativePath": "api/User/GetById/{id}",
+    "Method": "Get",
+    "RelativePath": "api/User/Get/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -347,6 +337,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SpotifyWebAPI.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "api/User/GetAll",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

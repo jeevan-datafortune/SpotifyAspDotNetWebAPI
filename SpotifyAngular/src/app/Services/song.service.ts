@@ -34,5 +34,5 @@ export class SongService {
     }
     removeFromPlayList(req:PlaylistSongModel):Observable<any>{
       return this.http.post<any>(`${GlobalVariables.BASE_API_URL}/songs/RemoveFromPlayList`,req);
-     }
+    }
 }
