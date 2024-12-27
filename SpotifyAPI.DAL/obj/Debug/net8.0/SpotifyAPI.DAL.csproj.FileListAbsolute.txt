@@ -1,0 +1,13 @@
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\bin\Debug\net8.0\SpotifyAPI.DAL.deps.json
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\bin\Debug\net8.0\SpotifyAPI.DAL.dll
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\bin\Debug\net8.0\SpotifyAPI.DAL.pdb
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.csproj.AssemblyReference.cache
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.AssemblyInfoInputs.cache
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.AssemblyInfo.cs
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.csproj.CoreCompileInputs.cache
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.sourcelink.json
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.dll
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\refint\SpotifyAPI.DAL.dll
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\SpotifyAPI.DAL.pdb
+C:\Users\jeevan.baby\Documents\GitHub\SpotifyAspDotNetWebAPI\SpotifyAPI.DAL\obj\Debug\net8.0\ref\SpotifyAPI.DAL.dll

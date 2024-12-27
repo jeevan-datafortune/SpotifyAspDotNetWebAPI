@@ -7,5 +7,6 @@ namespace SpotifyAPI.DAL.Interfaces
         UserModel? Create(UserModel user);
         UserModel? Update(UserModel user);
         UserModel? GetUser(int id);
+        IEnumerable<UserModel> GetAllUsers();
     }
 }

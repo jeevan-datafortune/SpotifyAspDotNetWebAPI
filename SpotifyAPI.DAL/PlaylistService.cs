@@ -22,7 +22,7 @@ namespace SpotifyAPI.DAL
                 IsPublic = playlist.IsPublic,
                 UserID = playlist.UserID
             };
-            _dbContext.Playlists.Add(model);
+            _dbContext.Playlist.Add(model);
             _dbContext.SaveChanges();
             return new PlaylistModel
             {
@@ -36,10 +36,10 @@ namespace SpotifyAPI.DAL
 
         public bool Delete(int id)
         {
-            var playList = _dbContext.Playlists.Where(x => x.Id == id).FirstOrDefault();
+            var playList = _dbContext.Playlist.Where(x => x.Id == id).FirstOrDefault();
             if (playList != null)
             {
-                _dbContext.Playlists.Remove(playList);
+                _dbContext.Playlist.Remove(playList);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -48,7 +48,7 @@ namespace SpotifyAPI.DAL
 
         public PlaylistModel? Get(int id)
         {
-            var playlist = _dbContext.Playlists.Where(x => x.Id == id)
+            var playlist = _dbContext.Playlist.Where(x => x.Id == id)
                 .Select(x => new PlaylistModel
                 {
                     Id = x.Id,
@@ -60,8 +60,8 @@ namespace SpotifyAPI.DAL
 
             if (playlist != null)
             {
-                var songs = from s in _dbContext.Songs
-                            join ps in _dbContext.PlaylistSongs.Where(x => x.PlaylistId == id).ToList()
+                var songs = from s in _dbContext.Song
+                            join ps in _dbContext.Playlist_Songs.Where(x => x.PlaylistId == id).ToList()
                             on s.Id equals ps.SongId
                             select s;
                 if (songs != null && songs.Any())
@@ -81,7 +81,7 @@ namespace SpotifyAPI.DAL
 
         public List<PlaylistModel> GetAll(int userId)
         {
-            return _dbContext.Playlists.Where(x => x.UserID == userId && x.IsPublic == true)
+            return _dbContext.Playlist.Where(x => x.UserID == userId && x.IsPublic == true)
                  .Select(x => new PlaylistModel
                  {
                      Id = x.Id,
@@ -102,7 +102,7 @@ namespace SpotifyAPI.DAL
                 IsPublic = playlist.IsPublic,
                 UserID = playlist.UserID
             };
-            _dbContext.Playlists.Add(model);
+            _dbContext.Playlist.Update(model);
             _dbContext.SaveChanges();
             return playlist;
         }

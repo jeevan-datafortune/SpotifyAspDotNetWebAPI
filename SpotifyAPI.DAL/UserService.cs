@@ -8,7 +8,7 @@ namespace SpotifyAPI.DAL
     public class UserService : IUserService
     {
         private readonly AppDbContext _dbContext;
-        public UserService(AppDbContext dbContext)=>_dbContext = dbContext;
+        public UserService(AppDbContext dbContext) => _dbContext = dbContext;
         public UserModel? Create(UserModel user)
         {
             var usr = new User
@@ -18,22 +18,36 @@ namespace SpotifyAPI.DAL
                 Email = user.Email,
                 IsActive = user.IsActive
             };
-            _dbContext.Users.Add(usr);
+            _dbContext.User.Add(usr);
             _dbContext.SaveChanges();
 
-            return new UserModel { 
-              Id = usr.Id,
-              Name = usr.Name,
-              Email = usr.Email,
-              IsActive = user.IsActive,
-              CreatedDate=usr.CreatedDate
+            return new UserModel
+            {
+                Id = usr.Id,
+                Name = usr.Name,
+                Email = usr.Email,
+                IsActive = user.IsActive,
+                CreatedDate = usr.CreatedDate
             };
+        }
+
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            return this._dbContext.User
+                .OrderBy(x => x.Name)
+                .Select(x => new UserModel
+                {
+                    Id = x.Id,
+                    Email = x.Email,
+                    IsActive = x.IsActive,
+                    CreatedDate = x.CreatedDate
+                }).ToList();
         }
 
         public UserModel? GetUser(int id)
         {
-            User? usr = _dbContext.Users.Where(u => u.Id == id).FirstOrDefault();
-            if(usr == null) return null;
+            User? usr = _dbContext.User.Where(u => u.Id == id).FirstOrDefault();
+            if (usr == null) return null;
             return new UserModel
             {
                 Id = usr.Id,
@@ -48,13 +62,13 @@ namespace SpotifyAPI.DAL
         {
             var usr = new User
             {
-                Id= user.Id,
+                Id = user.Id,
                 CreatedDate = DateTime.Now,
                 Name = user.Name,
                 Email = user.Email,
                 IsActive = user.IsActive
             };
-            _dbContext.Users.Update(usr);
+            _dbContext.User.Update(usr);
             return user;
         }
     }

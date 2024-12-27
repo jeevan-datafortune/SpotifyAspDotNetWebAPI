@@ -20,7 +20,7 @@ namespace SpotifyAPI.DAL
                 Id = artist.Id,
                 Name = artist.Name,
             };
-            _dbContext.Artists.Add(model);
+            _dbContext.Artist.Add(model);
             _dbContext.SaveChanges();
             return new ArtistModel
             {
@@ -31,12 +31,20 @@ namespace SpotifyAPI.DAL
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            _dbContext.Song_Artists.RemoveRange(_dbContext.Song_Artists.Where(x => x.ArtistId == id));
+            var artist = _dbContext.Artist.Where(x => x.Id == id).FirstOrDefault();
+            if (artist != null)
+            {
+                _dbContext.Artist.Remove(artist);
+            }
+            _dbContext.SaveChanges(true);
+            return true;
         }
 
         public List<ArtistModel> GetAll()
         {
-            return _dbContext.Artists
+            return _dbContext.Artist
+                .OrderBy(x=>x.Name)
                 .Select(z => new ArtistModel
                 {
                     Id = z.Id,
@@ -46,7 +54,7 @@ namespace SpotifyAPI.DAL
 
         public ArtistModel? GetById(int id)
         {
-            return _dbContext.Artists
+            return _dbContext.Artist
                 .Where(x => x.Id == id)
                 .Select(z => new ArtistModel
                 {
@@ -62,7 +70,7 @@ namespace SpotifyAPI.DAL
                 Id = artist.Id,
                 Name = artist.Name,
             };
-            _dbContext.Artists.Update(model);
+            _dbContext.Artist.Update(model);
             _dbContext.SaveChanges();
             return new ArtistModel
             {

@@ -2815,11 +2815,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\Spotify_API\\SpotifyAPI.DAL\\SpotifyAPI.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SpotifyAPI.DAL.csproj",
       "projectName": "SpotifyAPI.DAL",
-      "projectPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\Spotify_API\\SpotifyAPI.DAL\\SpotifyAPI.DAL.csproj",
+      "projectPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SpotifyAPI.DAL.csproj",
       "packagesPath": "C:\\Users\\jeevan.baby\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\Spotify_API\\SpotifyAPI.DAL\\obj\\",
+      "outputPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
