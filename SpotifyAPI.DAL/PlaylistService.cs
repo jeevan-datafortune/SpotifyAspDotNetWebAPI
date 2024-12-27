@@ -39,6 +39,11 @@ namespace SpotifyAPI.DAL
             var playList = _dbContext.Playlist.Where(x => x.Id == id).FirstOrDefault();
             if (playList != null)
             {
+                if (_dbContext.Playlist_Songs.Any(x => x.PlaylistId == id))
+                {
+                    _dbContext.Playlist_Songs.RemoveRange(_dbContext.Playlist_Songs.Where(x => x.PlaylistId == id));
+                    _dbContext.SaveChanges();
+                }
                 _dbContext.Playlist.Remove(playList);
                 _dbContext.SaveChanges();
                 return true;

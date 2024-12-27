@@ -23,8 +23,8 @@ namespace SpotifyWebAPI.Controllers
             return Ok(this._playlistService.GetAll(userid));
         }
 
-        [HttpGet("GetById/{id}")]
-        public IActionResult GetById(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
         {
             if (id <= 0)
                 throw new PlaylistException("Playlist not found");
@@ -47,10 +47,13 @@ namespace SpotifyWebAPI.Controllers
         [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
-            if (id <= 0 || this.GetById(id) == null)
+            if (id <= 0 || this.Get(id) == null)
                 throw new PlaylistException("Playlist not found");
 
-            return Ok(this._playlistService.Delete(id));
+            if (this._playlistService.Delete(id))
+                return Ok(new NotificationModel { SuccessMessage = "Playlist deleted successfully" });
+            else
+                throw new ArtistException($"An error occured while deleting playlist {id}");
         }
 
     }

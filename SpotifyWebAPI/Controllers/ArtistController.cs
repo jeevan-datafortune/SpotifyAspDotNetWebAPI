@@ -44,8 +44,10 @@ namespace SpotifyWebAPI.Controllers
         {
             if (id <= 0 || this.Get(id) == null)
                 throw new ArtistException("Artist not found");
-          
-            return Ok(this._artistService.Delete(id));
+            if (this._artistService.Delete(id))
+                return Ok(new NotificationModel { SuccessMessage = "Artist deleted successfully" });
+            else
+                throw new ArtistException($"An error occured while deleting artist {id}");
         }
     }
 }

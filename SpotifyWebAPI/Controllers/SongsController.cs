@@ -51,8 +51,10 @@ namespace SpotifyWebAPI.Controllers
         {
             if (id <= 0 || this.Get(id) == null)
                 throw new SongException("Song not found");
-
-            return Ok(this._songService.Delete(id));
+            if (this._songService.Delete(id))
+                return Ok(new NotificationModel { SuccessMessage = "Song deleted successfully" });
+            else
+                throw new ArtistException($"An error occured while deleting song {id}");
         }
 
         [HttpPost("AddToPlayList")]
@@ -68,6 +70,9 @@ namespace SpotifyWebAPI.Controllers
         [HttpPost("RemoveFromPlayList")]
         public IActionResult RemoveFromPlayList(PlaylistSongModel song)
         {
+            bool isExists = this._songService.CheckSongExistsinPlayList(song);
+            if (!isExists)
+                throw new SongException("Song is not exists in playlist");
             return Ok(this._songService.RemoveFromPlayList(song));
         }
 

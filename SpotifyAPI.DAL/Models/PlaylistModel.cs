@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyAPI.DAL.Models
 {
-    public class PlaylistModel
+    public class PlaylistModel : ErrorModel
     {
         public int? Id { get; set; }
         public string? Name { get; set; }

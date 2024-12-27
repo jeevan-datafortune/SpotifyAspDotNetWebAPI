@@ -21,7 +21,7 @@
             {
                 _logger.LogError(ex, ex.Message??"An error occured");
                 httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await httpContext.Response.WriteAsJsonAsync(new { message = ex.Message ?? "An error occured" });
+                await httpContext.Response.WriteAsJsonAsync(new { ErrorMessage = ex.Message ?? "An error occured" });
             }
         }
 

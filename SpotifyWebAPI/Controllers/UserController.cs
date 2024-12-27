@@ -15,14 +15,14 @@ namespace SpotifyWebAPI.Controllers
         private readonly IUserService _userService;
         public UserController(IUserService userService) => _userService = userService;
 
-        [HttpPost("GetAllUsers")]       
-        public IActionResult GetAllUsers()
+        [HttpPost("GetAll")]       
+        public IActionResult GetAll()
         {
             return Ok(this._userService.GetAllUsers());
         }
 
-        [HttpGet("GetById/{id}")]      
-        public IActionResult GetUser(int id)
+        [HttpGet("Get/{id}")]      
+        public IActionResult Get(int id)
         {
             if (id <= 0) { throw new UserException("User not found"); }
             return Ok(this._userService.GetUser(id));

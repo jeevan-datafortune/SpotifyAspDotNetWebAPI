@@ -87,20 +87,7 @@ namespace SpotifyAPI.DAL
                               };
 
                 if (artists != null && artists.Any())
-                    songModel.Artists = artists.ToList();
-
-                var playList = from s in _dbContext.Song
-                               join ps in _dbContext.Playlist_Songs.Where(x => x.SongId == id) on s.Id equals ps.SongId
-                               join p in _dbContext.Playlist on ps.PlaylistId equals p.Id
-                               select new PlaylistModel
-                               {
-                                   Id = p.Id,
-                                   Name = p.Name,
-                                   Description = p.Description,
-                                   IsPublic = p.IsPublic
-                               };
-                if (playList != null && playList.Any())
-                    songModel.Playlist = playList.FirstOrDefault();
+                    songModel.Artists = artists.ToList();              
 
                 return songModel;
             }
@@ -199,17 +186,7 @@ namespace SpotifyAPI.DAL
                                     {
                                         Id = a.Id,
                                         Name = a.Name
-                                    }).ToList();
-                songs[i].Playlist = (from s in _dbContext.Song
-                                     join ps in _dbContext.Playlist_Songs.Where(x => x.SongId == songs[i].Id) on s.Id equals ps.SongId
-                                     join p in _dbContext.Playlist on ps.PlaylistId equals p.Id
-                                     select new PlaylistModel
-                                     {
-                                         Id = p.Id,
-                                         Name = p.Name,
-                                         Description = p.Description,
-                                         IsPublic = p.IsPublic
-                                     }).FirstOrDefault();
+                                    }).ToList();               
             }
             return songs;
         }
