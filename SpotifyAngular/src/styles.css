@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-toolbar.mat-primary {
+    background: #3f51b5;
+    color: #fff;
+}
+.flexSpaceBetween {
+    justify-content: space-between;
+  }
+.flexExpand {
+    flex: 1 1 auto;
+  }
+ .flexExpand .mat-button-wrapper{
+    float: right!important;
+  }

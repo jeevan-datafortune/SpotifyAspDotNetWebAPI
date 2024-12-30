@@ -6,23 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import {MatSnackBarModule} from '@angular/material/snack-bar'
 import { httpInterceptor } from './httpInterceptor';
-import { MatDividerModule, MatIconModule, MatMenuModule } from '@angular/material';
+import { ArtistModule } from './artist/artist.module';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatMenuModule,    
-    MatIconModule,
-    MatDividerModule
+    HttpClientModule,   
+    ArtistModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:httpInterceptor,multi:true

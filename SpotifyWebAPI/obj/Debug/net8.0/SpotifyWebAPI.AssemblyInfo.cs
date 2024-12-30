@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpotifyWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+646f5e352e5acdc125c8b8c83d40abde0661d70e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a4cf895fa4ff10145b5d7f22badee19e1fb180b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpotifyWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpotifyWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

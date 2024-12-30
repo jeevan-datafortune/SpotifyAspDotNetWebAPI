@@ -13,23 +13,25 @@ namespace SpotifyAPI.DAL
             _dbContext = dbContext;
         }
 
-        public ArtistModel? Create(ArtistModel artist)
+        public NotificationModel Create(ArtistModel artist)
         {
-            var model = new Artist
+            var model = new Artist { Id = artist.Id, Name = artist.Name};
+            var notification = new NotificationModel { };
+            if (_dbContext.Artist.Where(x => x.Name.ToLower()==model.Name.ToLower() && x.Id != model.Id).Count() == 0)
             {
-                Id = artist.Id,
-                Name = artist.Name,
-            };
-            _dbContext.Artist.Add(model);
-            _dbContext.SaveChanges();
-            return new ArtistModel
+                _dbContext.Artist.Add(model);
+                _dbContext.SaveChanges();
+                notification.SuccessMessage = $"Artist {model.Name} is added successfully";
+            }
+            else
             {
-                Id = artist.Id,
-                Name = artist.Name
-            };
+                notification.ErrorMessage = $"Artist {model.Name} is already exists";
+            }
+
+           return notification;
         }
 
-        public bool Delete(int id)
+        public NotificationModel Delete(int id)
         {
             _dbContext.Song_Artists.RemoveRange(_dbContext.Song_Artists.Where(x => x.ArtistId == id));
             var artist = _dbContext.Artist.Where(x => x.Id == id).FirstOrDefault();
@@ -38,13 +40,13 @@ namespace SpotifyAPI.DAL
                 _dbContext.Artist.Remove(artist);
             }
             _dbContext.SaveChanges(true);
-            return true;
+            return new NotificationModel { SuccessMessage="Artist removed successfully"};
         }
 
         public List<ArtistModel> GetAll()
         {
             return _dbContext.Artist
-                .OrderBy(x=>x.Name)
+                .OrderBy(x => x.Name)
                 .Select(z => new ArtistModel
                 {
                     Id = z.Id,
@@ -63,20 +65,22 @@ namespace SpotifyAPI.DAL
                 }).FirstOrDefault();
         }
 
-        public ArtistModel? Update(ArtistModel artist)
+        public NotificationModel Update(ArtistModel artist)
         {
-            var model = new Artist
+            var model = new Artist { Id = artist.Id, Name = artist.Name };
+            var notification = new NotificationModel { };
+            if (_dbContext.Artist.Where(x => x.Name.ToLower() == model.Name.ToLower() && x.Id != model.Id).Count()  == 0)
             {
-                Id = artist.Id,
-                Name = artist.Name,
-            };
-            _dbContext.Artist.Update(model);
-            _dbContext.SaveChanges();
-            return new ArtistModel
+
+                _dbContext.Artist.Update(model);
+                _dbContext.SaveChanges();
+                notification.SuccessMessage = $"Artist {model.Name} is updated successfully";
+            }
+            else
             {
-                Id = artist.Id,
-                Name = artist.Name
-            };
+                notification.ErrorMessage = $"Artist {model.Name} is already exists";
+            }
+            return notification;
         }
     }
 }

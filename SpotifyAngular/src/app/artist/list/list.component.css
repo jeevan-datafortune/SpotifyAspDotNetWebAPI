@@ -1,0 +1,16 @@
+.mat-table{
+    width: 100%;
+  }
+  .mat-column-position{
+    width: 15%;
+}
+.mat-column-name{
+    width: 75%;
+}
+.mat-column-actions{
+    width: 10%;
+}
+.table-container{
+    width: 100%;
+    padding: 0px;
+}
