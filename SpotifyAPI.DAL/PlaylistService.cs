@@ -26,31 +26,29 @@ namespace SpotifyAPI.DAL
             _dbContext.SaveChanges();
             return new NotificationModel
             {
-                SuccessMessage="Playlist created"
+                SuccessMessage = "Playlist created"
             };
         }
 
         public NotificationModel Delete(int id)
         {
+            var notification = new NotificationModel { };
             var playList = _dbContext.Playlist.Where(x => x.Id == id).FirstOrDefault();
             if (playList != null)
             {
-                if (_dbContext.Playlist_Songs.Any(x => x.PlaylistId == id))
+                if (_dbContext.Playlist_Songs.Where(x => x.PlaylistId == id).Count()>0)
                 {
-                    _dbContext.Playlist_Songs.RemoveRange(_dbContext.Playlist_Songs.Where(x => x.PlaylistId == id));
-                    _dbContext.SaveChanges();
+                    _dbContext.Playlist_Songs.RemoveRange(_dbContext.Playlist_Songs.Where(x => x.PlaylistId == id));                   
                 }
                 _dbContext.Playlist.Remove(playList);
-                _dbContext.SaveChanges();
-                return new NotificationModel
-                {
-                    SuccessMessage = "Playlist removed"
-                };
+                _dbContext.SaveChanges(true);
+                notification.SuccessMessage="Playlist removed successfully";
             }
-            return new NotificationModel
+            else
             {
-                ErrorMessage = "Playlist not found"
-            };
+                notification.ErrorMessage = "Playlist not found";
+            }
+            return notification;
         }
 
         public PlaylistModel? Get(int id)
@@ -67,11 +65,12 @@ namespace SpotifyAPI.DAL
 
             if (playlist != null)
             {
-                var songs = from s in _dbContext.Song
-                            join ps in _dbContext.Playlist_Songs.Where(x => x.PlaylistId == id).ToList()
+                var songs = from s in _dbContext.Song.AsEnumerable()
+                            join ps in _dbContext.Playlist_Songs.AsEnumerable()
                             on s.Id equals ps.SongId
+                            where ps.PlaylistId == id
                             select s;
-                if (songs != null && songs.Any())
+                if (songs != null && songs.Count() > 0)
                 {
                     playlist.SongsCount = songs.Count();
                     playlist.Duration = songs.Sum(x => x.Duration);

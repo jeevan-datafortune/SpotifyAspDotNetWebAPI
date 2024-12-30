@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
     import('./user/user.module').then((a) => a.UserModule),
   } ,
+  {
+    path: 'playlist',
+    loadChildren: () =>
+    import('./playlist/playlist.module').then((a) => a.PlaylistModule),
+  } ,
   {path:'',pathMatch:'full',redirectTo:'artist'}
 ];
 

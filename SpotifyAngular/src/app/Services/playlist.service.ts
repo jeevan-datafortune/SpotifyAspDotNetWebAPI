@@ -23,7 +23,7 @@ export class PlaylistService {
   get(id:number):Observable<PlaylistModel>{
     return this.http.get<PlaylistModel>(`${GlobalVariables.BASE_API_URL}/playlist/get/${id}`);
   }
-  getUserPlayLists(userId:number):Observable<PlaylistModel>{
-    return this.http.get<PlaylistModel>(`${GlobalVariables.BASE_API_URL}/playlist/GetUserPlayLists/${userId}`);
+  getUserPlayLists(userId:number):Observable<PlaylistModel[]>{
+    return this.http.get<PlaylistModel[]>(`${GlobalVariables.BASE_API_URL}/playlist/GetUserPlayLists/${userId}`);
   }
 }

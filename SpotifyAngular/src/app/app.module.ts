@@ -8,9 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { httpInterceptor } from './httpInterceptor';
 import { ArtistModule } from './artist/artist.module';
+import { PlaylistModule } from './playlist/playlist.module';
+import { UserModule } from './user/user.module';
 @NgModule({
   declarations: [
-    AppComponent   
+    AppComponent       
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,9 @@ import { ArtistModule } from './artist/artist.module';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,   
-    ArtistModule
+    ArtistModule,
+    PlaylistModule,
+    UserModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:httpInterceptor,multi:true

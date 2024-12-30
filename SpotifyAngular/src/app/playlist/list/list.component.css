@@ -1,0 +1,25 @@
+.mat-table{
+    width: 100%;
+  }
+  .mat-column-position{
+    width: 10%;
+}
+.mat-column-name{
+    width: 30%;
+}
+.mat-column-description{
+    width: 30%;
+}
+.mat-column-songsCount{
+    width: 10%;
+}
+.mat-column-duration{
+    width: 10%;
+}
+.mat-column-actions{
+    width: 10%;
+}
+.table-container{
+    width: 100%;
+    padding: 0px;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+    <h3 mat-dialog-title>Confirmation</h3>
+    <div mat-dialog-content>     
+      <p></p>
+      Playlist: {{data.name}} 
+      <p></p>
+      This playlist will be removed permanently.
+      <p></p>
+       Are you sure, you want to continue?
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </div>

@@ -49,8 +49,8 @@ namespace SpotifyWebAPI.Controllers
         {
             if (id <= 0 || this.Get(id) == null)
                 throw new PlaylistException("Playlist not found");
-
-            return Ok(this._playlistService.Delete(id));
+            var result = this._playlistService.Delete(id);
+            return Ok(result);
         }
 
     }
