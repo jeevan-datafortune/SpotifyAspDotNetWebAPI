@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: () =>
     import('./artist/artist.module').then((a) => a.ArtistModule),
   } ,
+  {
+    path: 'user',
+    loadChildren: () =>
+    import('./user/user.module').then((a) => a.UserModule),
+  } ,
   {path:'',pathMatch:'full',redirectTo:'artist'}
 ];
 

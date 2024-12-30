@@ -4,8 +4,8 @@ namespace SpotifyAPI.DAL.Interfaces
 {
     public interface IUserService
     {
-        UserModel? Create(UserModel user);
-        UserModel? Update(UserModel user);
+        NotificationModel Create(UserModel user);
+        NotificationModel Update(UserModel user);
         UserModel? GetUser(int id);
         IEnumerable<UserModel> GetAllUsers();
         bool IsUserExists(string email, int id);

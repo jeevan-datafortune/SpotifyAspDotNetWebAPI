@@ -12,3 +12,12 @@ export type PlaylistModel={
     songsCount:number,
     duration:number
 }
+
+export type PlayListDataSource={
+    id:number,
+    name:string,
+    description:string,
+    songsCount:number,
+    duration:number,
+    image:string
+}

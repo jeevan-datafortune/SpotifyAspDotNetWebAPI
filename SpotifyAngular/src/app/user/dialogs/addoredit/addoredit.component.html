@@ -1,0 +1,24 @@
+<div class="container">
+    <h3 mat-dialog-title>New User</h3>  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input type="hidden" [(ngModel)]="data.id" name="id"/>
+          <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.name" name="name" required >
+          <mat-error *ngIf="userForm.invalid">{{getNameErrorMessage()}}</mat-error>       
+        </mat-form-field>        
+      </div>  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control"  placeholder="Email" [(ngModel)]="data.email" name="email" required>
+          <mat-error *ngIf="email()?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="email()?.hasError('email')">Please enter a valid email</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" (click)="onSubmit()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

@@ -343,7 +343,7 @@
     "ContainingType": "SpotifyWebAPI.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "api/User/GetAll",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],

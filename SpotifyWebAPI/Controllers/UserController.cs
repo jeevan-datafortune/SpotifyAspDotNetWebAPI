@@ -15,7 +15,7 @@ namespace SpotifyWebAPI.Controllers
         private readonly IUserService _userService;
         public UserController(IUserService userService) => _userService = userService;
 
-        [HttpPost("GetAll")]       
+        [HttpGet("GetAll")]       
         public IActionResult GetAll()
         {
             return Ok(this._userService.GetAllUsers());
@@ -30,19 +30,14 @@ namespace SpotifyWebAPI.Controllers
 
         [HttpPost("Create")]       
         public IActionResult Create(UserModel model)
-        {
-            if (this._userService.IsUserExists(model.Email, model.Id))
-                throw new UserException("Email already exists");
+        {           
             model.CreatedDate = DateTime.Now;            
             return Ok(this._userService.Create(model));
         }
 
         [HttpPost("Update")]       
         public IActionResult Update(UserModel model)
-        {
-            if (this._userService.IsUserExists(model.Email, model.Id))
-                throw new UserException("Email already exists");
-
+        {           
             model.CreatedDate = DateTime.Now;
             return Ok(this._userService.Update(model));
         }

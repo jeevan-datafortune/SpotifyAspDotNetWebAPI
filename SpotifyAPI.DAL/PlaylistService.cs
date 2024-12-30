@@ -13,7 +13,7 @@ namespace SpotifyAPI.DAL
             _dbContext = dbContext;
         }
 
-        public PlaylistModel? Create(PlaylistModel playlist)
+        public NotificationModel Create(PlaylistModel playlist)
         {
             var model = new Playlist
             {
@@ -24,17 +24,13 @@ namespace SpotifyAPI.DAL
             };
             _dbContext.Playlist.Add(model);
             _dbContext.SaveChanges();
-            return new PlaylistModel
+            return new NotificationModel
             {
-                Id = model.Id,
-                Name = model.Name,
-                Description = model.Description,
-                IsPublic = model.IsPublic,
-                UserID = model.UserID
+                SuccessMessage="Playlist created"
             };
         }
 
-        public bool Delete(int id)
+        public NotificationModel Delete(int id)
         {
             var playList = _dbContext.Playlist.Where(x => x.Id == id).FirstOrDefault();
             if (playList != null)
@@ -46,9 +42,15 @@ namespace SpotifyAPI.DAL
                 }
                 _dbContext.Playlist.Remove(playList);
                 _dbContext.SaveChanges();
-                return true;
+                return new NotificationModel
+                {
+                    SuccessMessage = "Playlist removed"
+                };
             }
-            return false;
+            return new NotificationModel
+            {
+                ErrorMessage = "Playlist not found"
+            };
         }
 
         public PlaylistModel? Get(int id)
@@ -97,7 +99,7 @@ namespace SpotifyAPI.DAL
                  }).ToList();
         }
 
-        public PlaylistModel? Update(PlaylistModel playlist)
+        public NotificationModel Update(PlaylistModel playlist)
         {
             var model = new Playlist
             {
@@ -109,7 +111,10 @@ namespace SpotifyAPI.DAL
             };
             _dbContext.Playlist.Update(model);
             _dbContext.SaveChanges();
-            return playlist;
+            return new NotificationModel
+            {
+                SuccessMessage = "Playlist updated"
+            };
         }
     }
 }

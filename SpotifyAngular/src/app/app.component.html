@@ -20,7 +20,7 @@
                   <a class="nav-link" href="#">Home</a>
                 </li>   
                 <li class="nav-item ">
-                  <a class="nav-link" [routerLink]="['artists']">Artists</a>
+                  <a class="nav-link" [routerLink]="['artist']">Artists</a>
                 </li>    
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Playlists</a>
@@ -29,7 +29,7 @@
                   <a class="nav-link" href="#">Songs</a>
                 </li> 
                 <li class="nav-item  active">
-                  <a class="nav-link" href="#">Users</a>
+                  <a class="nav-link" [routerLink]="['user']">Users</a>
                 </li> 
                 <li class="nav-item">
                   <a class="nav-link" [routerLink]="" (click)="logOut()" >

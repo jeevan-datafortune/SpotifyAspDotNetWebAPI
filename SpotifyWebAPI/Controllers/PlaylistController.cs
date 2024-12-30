@@ -50,10 +50,7 @@ namespace SpotifyWebAPI.Controllers
             if (id <= 0 || this.Get(id) == null)
                 throw new PlaylistException("Playlist not found");
 
-            if (this._playlistService.Delete(id))
-                return Ok(new NotificationModel { SuccessMessage = "Playlist deleted successfully" });
-            else
-                throw new ArtistException($"An error occured while deleting playlist {id}");
+            return Ok(this._playlistService.Delete(id));
         }
 
     }
