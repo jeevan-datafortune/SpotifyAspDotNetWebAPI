@@ -9,5 +9,6 @@ namespace SpotifyAPI.DAL.Models
     public class NotificationModel:ErrorModel
     {
         public string? SuccessMessage { get; set; }
+        public int? id { get; set; }
     }
 }

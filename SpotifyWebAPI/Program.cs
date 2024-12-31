@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using SpotifyAPI.DAL.Data;
 using Microsoft.OpenApi.Models;
 using SpotifyWebAPI;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -100,5 +101,11 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/images"  // Map the `/images` URL path to the folder
+});
 
 app.Run();

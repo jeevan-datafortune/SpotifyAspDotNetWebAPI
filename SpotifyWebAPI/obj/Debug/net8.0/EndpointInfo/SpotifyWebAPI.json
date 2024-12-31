@@ -318,6 +318,49 @@
         }
       }
     },
+    "/api/Playlist/Uplaod/{id}": {
+      "post": {
+        "tags": [
+          "Playlist"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Songs/GetAll": {
       "get": {
         "tags": [
@@ -703,6 +746,10 @@
             "items": {
               "$ref": "#/components/schemas/ImageModel"
             },
+            "nullable": true
+          },
+          "image": {
+            "type": "string",
             "nullable": true
           },
           "songsCount": {

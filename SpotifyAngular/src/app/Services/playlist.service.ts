@@ -26,4 +26,9 @@ export class PlaylistService {
   getUserPlayLists(userId:number):Observable<PlaylistModel[]>{
     return this.http.get<PlaylistModel[]>(`${GlobalVariables.BASE_API_URL}/playlist/GetUserPlayLists/${userId}`);
   }
+  uploadImage(file: File,id:number):Observable<any>{
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(`${GlobalVariables.BASE_API_URL}/playlist/Uplaod/${id}`, formData);
+  }
 }

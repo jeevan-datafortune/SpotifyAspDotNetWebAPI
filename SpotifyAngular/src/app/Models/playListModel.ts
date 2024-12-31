@@ -10,7 +10,8 @@ export type PlaylistModel={
     owner?:UserModel,
     images?:ImageModel[],
     songsCount?:number,
-    duration?:number
+    duration?:number,
+    image?:string
 }
 
 export type PlayListDataSource={

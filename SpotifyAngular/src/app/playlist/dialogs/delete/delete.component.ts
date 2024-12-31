@@ -20,8 +20,7 @@ export class DeleteComponent implements OnInit {
   }
 
   confirmDelete(): void {
-    this.dataService.delete(this.data.id).subscribe((res:NotificationModel)=>{
-      console.log(res)
+    this.dataService.delete(this.data.id).subscribe((res:NotificationModel)=>{      
       this.dialogRef.close(res);
     });
   }

@@ -13,7 +13,7 @@ import { DeleteComponent } from '../dialogs/delete/delete.component';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  displayedColumns = ['position','name','description','songsCount','duration', 'actions'];
+  displayedColumns = ['position','photo','name','description','songsCount','duration', 'actions'];
   dataSource:PlayListDataSource[]; 
   constructor(private playlist:PlaylistService,  public dialog: MatDialog,private snakbar:MatSnackBar) { }
 
@@ -28,11 +28,12 @@ export class ListComponent implements OnInit {
             id:item.id,
             name:item.name,
             description:item.description,
-            image: (item.images!=null && item.images.length>0)?item.images[0].uri:'',
+            image:item.image,
             duration:item.duration,
             songsCount:item.songsCount,
             userID:item.userID,
-            isPublic:item.isPublic
+            isPublic:item.isPublic,
+            images:item.images
           };
        });    
          
@@ -57,6 +58,7 @@ export class ListComponent implements OnInit {
       dialogRef.afterClosed().subscribe((result:NotificationModel) => this.handleMessageBox(result));
     }
   handleMessageBox(result:NotificationModel){
+    console.log(result)
     if(result){      
       if(result.successMessage!=null || result.errorMessage!=null){
         this.snakbar.open(result.successMessage||result.errorMessage,'Close');
@@ -65,5 +67,13 @@ export class ListComponent implements OnInit {
           this.reload();
       }
     }    
+  }
+  getImageUrl(item:PlaylistModel){
+    if(item.image!=null){
+      return `${GlobalVariables.IMAGE_PATH}${item.image}`;
+    }
+    if(item.images!=null && item.images.length>0){
+      return `${GlobalVariables.IMAGE_PATH}${item.images[0].uri}`;
+    }
   }
 }

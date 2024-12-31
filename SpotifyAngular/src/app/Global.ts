@@ -1,5 +1,6 @@
 export const GlobalVariables=Object.freeze({
     BASE_API_URL: 'http://localhost:5007/api',
+    IMAGE_PATH:'http://localhost:5007/images/',
     USER_ID:parseInt( localStorage.getItem('userId') ||'0'),
     USER_NAME:localStorage.getItem('userName') ||'',
     AUTH_TOKEN:  localStorage.getItem('token')||'',

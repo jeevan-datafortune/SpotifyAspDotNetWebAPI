@@ -15,4 +15,8 @@
     <ProjectReference Include="..\SpotifyAPI.DAL\SpotifyAPI.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+
 </Project>

@@ -26,7 +26,8 @@ namespace SpotifyAPI.DAL
             _dbContext.SaveChanges();
             return new NotificationModel
             {
-                SuccessMessage = "Playlist created"
+                SuccessMessage = "Playlist created",
+                id=model.Id
             };
         }
 
@@ -60,7 +61,8 @@ namespace SpotifyAPI.DAL
                     Name = x.Name,
                     Description = x.Description,
                     IsPublic = x.IsPublic,
-                    UserID = x.UserID
+                    UserID = x.UserID,
+                    Image= x.Image
                 }).FirstOrDefault();
 
             if (playlist != null)
@@ -74,6 +76,13 @@ namespace SpotifyAPI.DAL
                 {
                     playlist.SongsCount = songs.Count();
                     playlist.Duration = songs.Sum(x => x.Duration);
+                    playlist.Images = new List<ImageModel>();
+                    if (!string.IsNullOrEmpty(playlist.Image))
+                    {
+                        playlist.Images.Add(new ImageModel { Uri= playlist.Image });
+                    }
+                    playlist.Images.AddRange(songs.OrderBy(x => x.Name).Select(x => new ImageModel { Uri = x.Image }).ToList());
+                    
                 }
                 else
                 {
@@ -94,7 +103,8 @@ namespace SpotifyAPI.DAL
                      Name = x.Name,
                      Description = x.Description,
                      IsPublic = x.IsPublic,
-                     UserID = x.UserID
+                     UserID = x.UserID,
+                     Image = x.Image,
                  }).ToList();
         }
 
@@ -106,8 +116,9 @@ namespace SpotifyAPI.DAL
                 Name = playlist.Name,
                 Description = playlist.Description,
                 IsPublic = playlist.IsPublic,
-                UserID = playlist.UserID
-            };
+                UserID = playlist.UserID,
+                Image = playlist.Image
+            };            
             _dbContext.Playlist.Update(model);
             _dbContext.SaveChanges();
             return new NotificationModel

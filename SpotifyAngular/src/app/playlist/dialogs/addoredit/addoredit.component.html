@@ -15,7 +15,9 @@
           <mat-error *ngIf="editForm.invalid && editForm.get('description').hasError('required')">Required</mat-error>          
         </mat-form-field>
       </div>
-  
+      <div class="form">
+        <input type="file" (change)="onFileSelected($event)" />    
+      </div>
       <div mat-dialog-actions>
         <button mat-button [type]="submit" [disabled]="!formControl.valid" (click)="onSubmit()">Save</button>
         <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>

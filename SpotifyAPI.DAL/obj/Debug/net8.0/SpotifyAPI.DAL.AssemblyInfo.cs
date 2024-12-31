@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpotifyAPI.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7af4d12dad609d34f00466f0b0161a42c5cd0926")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1691a1f3fad47e96c463ad6bb8c2d7415d330cb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpotifyAPI.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpotifyAPI.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
