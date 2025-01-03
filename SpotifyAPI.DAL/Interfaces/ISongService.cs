@@ -14,5 +14,6 @@ namespace SpotifyAPI.DAL.Interfaces
         List<SongModel> GetAll();
         List<SongModel> GetSongsByPlayList(int playListId);
         bool UpdateImage(int? id, string imageName);
+        List<SongModel> Search(string key);
     }
 }

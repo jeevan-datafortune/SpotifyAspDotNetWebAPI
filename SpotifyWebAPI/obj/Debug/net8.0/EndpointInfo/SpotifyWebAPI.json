@@ -609,6 +609,28 @@
         }
       }
     },
+    "/api/Songs/Search/{key}": {
+      "get": {
+        "tags": [
+          "Songs"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User/GetAll": {
       "get": {
         "tags": [
@@ -783,6 +805,13 @@
           },
           "owner": {
             "$ref": "#/components/schemas/UserModel"
+          },
+          "songs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlaylistSongModel"
+            },
+            "nullable": true
           },
           "images": {
             "type": "array",

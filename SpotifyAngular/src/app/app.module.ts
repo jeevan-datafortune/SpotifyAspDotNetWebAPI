@@ -10,10 +10,17 @@ import { ArtistModule } from './artist/artist.module';
 import { PlaylistModule } from './playlist/playlist.module';
 import { UserModule } from './user/user.module';
 import { SongsModule } from './songs/songs.module';
+import { HomeComponent } from './home/home.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon'
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
-    AppComponent   
+    AppComponent,
+    HomeComponent   
   ],
   imports: [
     BrowserModule,
@@ -24,7 +31,11 @@ import { SongsModule } from './songs/songs.module';
     ArtistModule,
     PlaylistModule,
     UserModule,
-    SongsModule
+    SongsModule,
+    MatMenuModule,    
+    MatIconModule,
+    MatDividerModule,
+    MatSnackBarModule,
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:httpInterceptor,multi:true

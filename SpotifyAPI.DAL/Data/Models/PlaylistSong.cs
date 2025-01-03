@@ -17,5 +17,8 @@ namespace SpotifyAPI.DAL.Data.Models
 
         [Required]
         public DateTime? AddedOn { get; set; }
+
+        public Playlist? Playlist { get; set; }
+        public Song? Song { get; set; }
     }
 }

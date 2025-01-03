@@ -314,6 +314,22 @@
   },
   {
     "ContainingType": "SpotifyWebAPI.Controllers.SongsController",
+    "Method": "Search",
+    "RelativePath": "api/Songs/Search/{key}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SpotifyWebAPI.Controllers.SongsController",
     "Method": "Update",
     "RelativePath": "api/Songs/Update",
     "HttpMethod": "PUT",

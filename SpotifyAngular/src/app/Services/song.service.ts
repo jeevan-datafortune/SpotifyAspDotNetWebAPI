@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import{GlobalVariables} from '../Global';
-import { SongModel } from '../Models/songModel';
+import { SongDataSource, SongModel } from '../Models/songModel';
 import { PlaylistSongModel } from '../Models/playlistSongModel';
 import { NotificationModel } from '../Models/notificationModel';
 
@@ -40,5 +40,8 @@ export class SongService {
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
       return this.http.post(`${GlobalVariables.BASE_API_URL}/songs/Uplaod/${id}`, formData);
+    }
+    search(key:string):Observable<SongModel[]>{
+      return this.http.get<SongModel[]>(`${GlobalVariables.BASE_API_URL}/songs/Search/${key}`);
     }
 }

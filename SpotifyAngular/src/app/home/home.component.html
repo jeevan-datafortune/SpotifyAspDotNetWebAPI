@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-lg-3">
+        <div class="library-container">
+            <div class="playlist-title text-white">
+                <span>Playlists</span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 p-0 playlist-container">
+                <ul class="list-group" id="ulPlayLists">
+                    <li class="list-group-item playlistitem" *ngFor="let item of userPlayLists">
+                        <a [routerLink]="" #listItem (click)="loadPlayListItems(item)" class="text-dark">
+                            <div class="col-3 float-start">
+                                <img width="50px" height="50px" [src]="playListIcon(item)"
+                                    class="border-primary rounded">
+                                <i class="bi bi-caret-right-fill icon text-dark"></i>
+                            </div>
+                            <div class="col-9 float-end">
+                                <p class="mb-1 name"><strong>{{item.name}}</strong></p>
+                                <p class="mb-1 owner">Playlist. {{item.owner.name}}</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="library-container">
+            <div class="playlist-title text-white">
+                <span>Songs</span>
+            </div>
+            <div class="row p-4">
+                <div class="col-lg-12 col-md-12 col-xs-12 float-end playlist-container">
+                    <h5 class="text-dark">Songs</h5>
+                    <ul class="list-group" id="ulPlayLists">
+                        <li class="list-group-item text-dark playlistitem"
+                            *ngFor="let item of searchResponse">
+                            <div class="row">
+                                <div class="col-lg-2 float-start">
+                                    <img width="50px" height="50px" [src]="songIcon(item)"
+                                        class="border-primary rounded">                                  
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="mb-1 name" style="font-size:13px;"><strong>{{item.name}}</strong></p>
+                                    <p class="mb-1 owner" [title]="item?.artists">
+                                        {{item?.artists}}
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 name">
+                                    {{formatDuration(item?.duration)}}
+                                </div>
+
+                                <div class="col-lg-1 float-end actions" *ngIf="isFromSearch==true">
+
+                                    <mat-icon [matMenuTriggerFor]="menu"  class="name">more_vert</mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item disabled>
+                                            <mat-icon>playlist_add</mat-icon>
+                                            <span>Add to Playlist</span>
+                                        </button>
+                                        <mat-divider></mat-divider>
+                                        <button mat-menu-item *ngFor="let p of userPlayLists"
+                                            (click)="addToPlayList(p,item)">
+                                            <span>{{p?.name}}</span>
+                                        </button>
+                                    </mat-menu>
+                                </div>
+                                <div class="col-lg-1 float-end actions" *ngIf="isFromSearch==false">
+                                    <button type="button" class="btn btn-md btn-danger text-white" (click)="onRemoveFromPlaylist(item)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

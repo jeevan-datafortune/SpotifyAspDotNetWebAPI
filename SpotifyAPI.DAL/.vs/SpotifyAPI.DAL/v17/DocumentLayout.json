@@ -3,14 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C568E43-D010-46EF-8519-1120D4782714}|..\\SpotifyWebAPI\\SpotifyWebAPI.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifywebapi\\controllers\\songscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E5FFB097-FC07-42FE-8C31-F8E898856FB5}|SpotifyAPI.DAL.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifyapi.dal\\songservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5FFB097-FC07-42FE-8C31-F8E898856FB5}|SpotifyAPI.DAL.csproj|solutionrelative:songservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C568E43-D010-46EF-8519-1120D4782714}|..\\SpotifyWebAPI\\SpotifyWebAPI.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifywebapi\\controllers\\playlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E5FFB097-FC07-42FE-8C31-F8E898856FB5}|SpotifyAPI.DAL.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifyapi.dal\\interfaces\\isongservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5FFB097-FC07-42FE-8C31-F8E898856FB5}|SpotifyAPI.DAL.csproj|solutionrelative:interfaces\\isongservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C568E43-D010-46EF-8519-1120D4782714}|..\\SpotifyWebAPI\\SpotifyWebAPI.csproj|c:\\users\\jeevan.baby\\documents\\github\\spotifyaspdotnetwebapi\\spotifywebapi\\controllers\\songscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,40 +26,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PlaylistController.cs",
-              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\PlaylistController.cs",
-              "RelativeDocumentMoniker": "..\\SpotifyWebAPI\\Controllers\\PlaylistController.cs",
-              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\PlaylistController.cs",
-              "RelativeToolTip": "..\\SpotifyWebAPI\\Controllers\\PlaylistController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T10:15:02.028Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SongService.cs",
-              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SongService.cs",
-              "RelativeDocumentMoniker": "SongService.cs",
-              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SongService.cs",
-              "RelativeToolTip": "SongService.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAmwDoAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T08:53:55.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "SongsController.cs",
               "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\SongsController.cs",
               "RelativeDocumentMoniker": "..\\SpotifyWebAPI\\Controllers\\SongsController.cs",
               "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyWebAPI\\Controllers\\SongsController.cs",
               "RelativeToolTip": "..\\SpotifyWebAPI\\Controllers\\SongsController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAA5wEcAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAmwHoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T07:27:38.389Z",
+              "WhenOpened": "2025-01-03T11:27:45.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ISongService.cs",
+              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\Interfaces\\ISongService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\ISongService.cs",
+              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\Interfaces\\ISongService.cs",
+              "RelativeToolTip": "Interfaces\\ISongService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T11:27:34.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SongService.cs",
+              "DocumentMoniker": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SongService.cs",
+              "RelativeDocumentMoniker": "SongService.cs",
+              "ToolTip": "C:\\Users\\jeevan.baby\\Documents\\GitHub\\SpotifyAspDotNetWebAPI\\SpotifyAPI.DAL\\SongService.cs",
+              "RelativeToolTip": "SongService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA0wBcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-03T11:24:46.205Z",
               "EditorCaption": ""
             }
           ]

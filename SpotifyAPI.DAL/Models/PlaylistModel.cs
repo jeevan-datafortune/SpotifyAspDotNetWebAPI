@@ -14,6 +14,7 @@ namespace SpotifyAPI.DAL.Models
         public bool? IsPublic { get; set; }
         public int? UserID { get; set; }
         public UserModel?  Owner { get; set; }
+        public List<PlaylistSongModel>? Songs { get; set; }
         public List<ImageModel>? Images { get; set; } 
         public string? Image { get; set; }
         public int? SongsCount { get; set; }

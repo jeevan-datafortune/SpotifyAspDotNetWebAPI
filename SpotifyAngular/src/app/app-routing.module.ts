@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
     loadChildren: () =>
     import('./songs/songs.module').then((a) => a.SongsModule),
   } ,
-  {path:'',pathMatch:'full',redirectTo:'artist'}
+  {path:'home',component:HomeComponent},
+  {path:'',pathMatch:'full',redirectTo:'home'}
 ];
 
 @NgModule({

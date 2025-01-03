@@ -20,7 +20,8 @@ namespace SpotifyAPI.DAL
             var songToPlayList = new Data.Models.PlaylistSong()
             {
                 PlaylistId = song.PlayListId,
-                SongId = song.SongId
+                SongId = song.SongId,
+                AddedOn=DateTime.Now               
             };
 
             _dbContext.Playlist_Songs.Add(songToPlayList);
@@ -196,7 +197,36 @@ namespace SpotifyAPI.DAL
             };
         }
 
+        public List<SongModel> Search(string key)
+        {
+            var songs = this._dbContext.Song
+                .Where(x=>x.Name.ToLower().StartsWith(key.ToLower()))
+               .OrderByDescending(x => x.Id)
+               .Select(x => new SongModel
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Duration = x.Duration,
+                   Uri = x.Uri,
+                   Image = x.Image,                   
+               }).ToList();
 
+            foreach (var song in songs)
+            {
+                var artists = from sa in _dbContext.Song_Artists.Where(x => x.SongId == song.Id)
+                              join a in _dbContext.Artist on sa.ArtistId equals a.Id
+                              orderby a.Name ascending
+                              select new ArtistModel
+                              {
+                                  Id = a.Id,
+                                  Name = a.Name
+                              };
+
+                if (artists != null && artists.Any())
+                    song.Artists = artists.ToList();
+            }
+            return songs;
+        }
         public List<SongModel> GetSongsByPlayList(int playListId)
         {
             var songs = (from ps in _dbContext.Playlist_Songs.Where(x => x.PlaylistId == playListId)

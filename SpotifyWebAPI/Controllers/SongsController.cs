@@ -118,5 +118,12 @@ namespace SpotifyWebAPI.Controllers
             throw new SongException("Song is not found");
         }
 
+        [HttpGet("Search/{key}")]
+        public IActionResult Search(string key)
+        {
+            return Ok(this._songService.Search(key));
+        }
+
+
     }
 }

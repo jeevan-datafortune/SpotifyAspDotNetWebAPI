@@ -18,5 +18,7 @@ namespace SpotifyAPI.DAL.Data.Models
         public bool? IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? Password {  get; set; }
+
+        public ICollection<Playlist>? Playlists { get; set; }
     }
 }

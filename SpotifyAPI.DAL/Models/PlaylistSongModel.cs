@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpotifyAPI.DAL.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace SpotifyAPI.DAL.Models
     {
         public int? PlayListId { get; set; }
         public int? SongId { get; set; }
+       
     }
 }

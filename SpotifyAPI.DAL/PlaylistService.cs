@@ -62,41 +62,49 @@ namespace SpotifyAPI.DAL
                     Description = x.Description,
                     IsPublic = x.IsPublic,
                     UserID = x.UserID,
-                    Image= x.Image
-                }).FirstOrDefault();
-
-            if (playlist != null)
-            {
-                var songs = from s in _dbContext.Song.AsEnumerable()
-                            join ps in _dbContext.Playlist_Songs.AsEnumerable()
-                            on s.Id equals ps.SongId
-                            where ps.PlaylistId == id
-                            select s;
-                if (songs != null && songs.Count() > 0)
-                {
-                    playlist.SongsCount = songs.Count();
-                    playlist.Duration = songs.Sum(x => x.Duration);
-                    playlist.Images = new List<ImageModel>();
-                    if (!string.IsNullOrEmpty(playlist.Image))
+                    Owner = new UserModel()
                     {
-                        playlist.Images.Add(new ImageModel { Uri= playlist.Image });
-                    }
-                    playlist.Images.AddRange(songs.OrderBy(x => x.Name).Select(x => new ImageModel { Uri = x.Image }).ToList());
+                        Id = x.Id,
+                        Name = x.Name
+                    },
+                    Image = x.Image,
+                    SongsCount=x.Songs.Count(),
+                    Duration=x.Songs.Sum(s=>s.Song.Duration)
+                }).FirstOrDefault();
+            
+            //if (playlist != null)
+            //{
+                
+            //    var songs = from s in _dbContext.Song.AsEnumerable()
+            //                join ps in _dbContext.Playlist_Songs.AsEnumerable()
+            //                on s.Id equals ps.SongId
+            //                where ps.PlaylistId == id
+            //                select s;
+            //    if (songs != null && songs.Count() > 0)
+            //    {
+            //        playlist.SongsCount = songs.Count();
+            //        playlist.Duration = songs.Sum(x => x.Duration);
+            //        playlist.Images = new List<ImageModel>();
+            //        if (!string.IsNullOrEmpty(playlist.Image))
+            //        {
+            //            playlist.Images.Add(new ImageModel { Uri= playlist.Image });
+            //        }
+            //        playlist.Images.AddRange(songs.OrderBy(x => x.Name).Select(x => new ImageModel { Uri = x.Image }).ToList());
                     
-                }
-                else
-                {
-                    playlist.SongsCount = 0;
-                    playlist.Duration = 0;
-                }
+            //    }
+            //    else
+            //    {
+            //        playlist.SongsCount = 0;
+            //        playlist.Duration = 0;
+            //    }
 
-            }
+            //}
             return playlist;
         }
 
         public List<PlaylistModel> GetAll(int userId)
         {
-            return _dbContext.Playlist.Where(x => x.UserID == userId && x.IsPublic == true)
+           var playLists= _dbContext.Playlist.Where(x => x.UserID == userId && x.IsPublic == true)
                  .Select(x => new PlaylistModel
                  {
                      Id = x.Id,
@@ -104,8 +112,17 @@ namespace SpotifyAPI.DAL
                      Description = x.Description,
                      IsPublic = x.IsPublic,
                      UserID = x.UserID,
+                     Owner = new UserModel()
+                     {
+                         Id=x.Id,
+                         Name=x.Name
+                     },
                      Image = x.Image,
+                     SongsCount= x.Songs.Count(),
+                     Duration = x.Songs.Sum(s => s.Song.Duration)
                  }).ToList();
+          
+            return playLists;
         }
 
         public NotificationModel Update(PlaylistModel playlist)

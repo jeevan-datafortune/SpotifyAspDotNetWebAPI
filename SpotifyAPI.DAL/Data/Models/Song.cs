@@ -13,6 +13,9 @@ namespace SpotifyAPI.DAL.Data.Models
         public string? Name { get; set; }
         public string? Uri { get; set; }
         public int? Duration { get; set; }
-        public string? Image { get; set; }       
+        public string? Image { get; set; }
+
+        public PlaylistSong? PlaylistSong { get; set; }
+      
     }
 }
