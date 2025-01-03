@@ -4,9 +4,9 @@ namespace SpotifyAPI.DAL.Interfaces
 {
     public interface ISongService
     {
-        SongModel? Create(SongModel song);
-        SongModel? Update(SongModel song);
-        bool Delete(int id);
+        NotificationModel Create(SongModel song);
+        NotificationModel Update(SongModel song);
+        NotificationModel Delete(int id);
         SongModel? Get(int? id);
         bool AddToPlayList(PlaylistSongModel song);
         bool RemoveFromPlayList(PlaylistSongModel song);

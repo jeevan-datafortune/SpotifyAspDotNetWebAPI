@@ -28,7 +28,7 @@ namespace SpotifyAPI.DAL
             return true;
         }
 
-        public SongModel? Create(SongModel song)
+        public NotificationModel Create(SongModel song)
         {
             var model = new Song
             {
@@ -47,20 +47,32 @@ namespace SpotifyAPI.DAL
                 }
                 _dbContext.SaveChanges(true);
             }
-            return this.Get(model.Id);
+            return new NotificationModel
+            {
+                SuccessMessage = "Song created",
+                id = model.Id
+            };
         }
 
-        public bool Delete(int id)
+        public NotificationModel Delete(int id)
         {
+            var notification = new NotificationModel { };
             var song = _dbContext.Song.Where(x => x.Id == id).FirstOrDefault();
             if (song != null)
             {
                 _dbContext.Song_Artists.RemoveRange(_dbContext.Song_Artists.Where(x => x.SongId == id));
+                _dbContext.SaveChanges();
                 _dbContext.Playlist_Songs.RemoveRange(_dbContext.Playlist_Songs.Where(x => x.SongId == id));
-                _dbContext.SaveChanges(true);
-                return true;
+                _dbContext.SaveChanges();
+                _dbContext.Song.Remove(song);
+                _dbContext.SaveChanges();
+                notification.SuccessMessage = "Song removed successfully";
             }
-            return false;
+            else
+            {
+                notification.ErrorMessage = "Song not found";
+            }
+            return notification;
         }
 
         public SongModel? Get(int? id)
@@ -87,7 +99,7 @@ namespace SpotifyAPI.DAL
                               };
 
                 if (artists != null && artists.Any())
-                    songModel.Artists = artists.ToList();              
+                    songModel.Artists = artists.ToList();
 
                 return songModel;
             }
@@ -96,20 +108,37 @@ namespace SpotifyAPI.DAL
 
         public List<SongModel> GetAll()
         {
-            return this._dbContext.Song
+          var songs= this._dbContext.Song
                 .OrderByDescending(x => x.Id)
                 .Select(x => new SongModel
                 {
                     Id = x.Id,
                     Name = x.Name,
                     Duration = x.Duration,
-                    Uri = x.Uri
+                    Uri = x.Uri,
+                    Image = x.Image
                 }).ToList();
+
+            foreach (var song in songs)
+            {
+                var artists = from sa in _dbContext.Song_Artists.Where(x => x.SongId == song.Id)
+                              join a in _dbContext.Artist on sa.ArtistId equals a.Id
+                              orderby a.Name ascending
+                              select new ArtistModel
+                              {
+                                  Id = a.Id,
+                                  Name = a.Name
+                              };
+
+                if (artists != null && artists.Any())
+                    song.Artists = artists.ToList();
+            }
+            return songs;
         }
 
         public bool RemoveFromPlayList(PlaylistSongModel song)
         {
-            var playListSong = _dbContext.Playlist_Songs.FirstOrDefault(x => x.SongId == song.SongId && x.PlaylistId==song.PlayListId);
+            var playListSong = _dbContext.Playlist_Songs.FirstOrDefault(x => x.SongId == song.SongId && x.PlaylistId == song.PlayListId);
             if (playListSong != null)
             {
                 _dbContext.Playlist_Songs.Remove(playListSong);
@@ -138,14 +167,15 @@ namespace SpotifyAPI.DAL
             }
             return false;
         }
-        public SongModel? Update(SongModel song)
+        public NotificationModel Update(SongModel song)
         {
             var model = new Song
             {
                 Id = song.Id,
                 Duration = song.Duration,
                 Name = song.Name,
-                Uri = song.Uri
+                Uri = song.Uri,
+                Image = song.Image
             };
 
             _dbContext.Song.Update(model);
@@ -160,7 +190,10 @@ namespace SpotifyAPI.DAL
                 }
                 _dbContext.SaveChanges(true);
             }
-            return this.Get(model.Id);
+            return new NotificationModel
+            {
+                SuccessMessage = "Song updated"
+            };
         }
 
 
@@ -186,7 +219,7 @@ namespace SpotifyAPI.DAL
                                     {
                                         Id = a.Id,
                                         Name = a.Name
-                                    }).ToList();               
+                                    }).ToList();
             }
             return songs;
         }

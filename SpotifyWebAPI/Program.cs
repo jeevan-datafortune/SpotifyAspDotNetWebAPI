@@ -39,8 +39,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Access the connection string
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // Example: Configure DbContext if using Entity Framework Core
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => {
+    options.UseSqlServer(connectionString);
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 // Add Swagger services to the container.
 builder.Services.AddEndpointsApiExplorer();

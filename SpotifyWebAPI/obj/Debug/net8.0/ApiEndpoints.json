@@ -329,6 +329,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SpotifyWebAPI.Controllers.SongsController",
+    "Method": "UploadImage",
+    "RelativePath": "api/Songs/Uplaod/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SpotifyWebAPI.Controllers.UserController",
     "Method": "Create",
     "RelativePath": "api/User/Create",

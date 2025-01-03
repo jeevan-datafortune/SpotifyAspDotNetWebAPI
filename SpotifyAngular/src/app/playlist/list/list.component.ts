@@ -75,5 +75,6 @@ export class ListComponent implements OnInit {
     if(item.images!=null && item.images.length>0){
       return `${GlobalVariables.IMAGE_PATH}${item.images[0].uri}`;
     }
+    return './assets/music.jpg';
   }
 }

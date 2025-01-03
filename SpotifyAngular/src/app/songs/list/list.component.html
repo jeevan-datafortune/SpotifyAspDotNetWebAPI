@@ -1,0 +1,64 @@
+<div class="row">
+    <mat-toolbar color="primary" class="flexSpaceBetween">
+        <span>Songs</span>
+        <span class="spacer"></span>     
+        <button mat-icon-button class="flexExpand" (click)="reload()">
+          <mat-icon>refresh</mat-icon>
+        </button>    
+      </mat-toolbar>
+      <div class="table-container mt-2">     
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-responsive">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> SNo. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+        <ng-container matColumnDef="photo">
+          <th mat-header-cell *matHeaderCellDef> Image </th>
+          <td mat-cell *matCellDef="let element">
+            <img [src]="getImageUrl(element)" alt="Image" class="image-cell">
+          </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>     
+        <!-- description Column -->
+        <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef> Duration </th>
+            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+          </ng-container>          
+         <ng-container matColumnDef="uri">
+            <th mat-header-cell *matHeaderCellDef> Url </th>
+            <td mat-cell *matCellDef="let element"> {{element.uri}} </td>
+          </ng-container>  
+          <ng-container matColumnDef="artists">
+            <th mat-header-cell *matHeaderCellDef> Artists </th>
+            <td mat-cell *matCellDef="let element"> {{element.artists}} </td>
+          </ng-container>  
+        <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> 
+            <button mat-icon-button color="primary" class="float-end" (click)="addNew()">
+                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+              </button>
+        </th>
+
+        <td mat-cell *matCellDef="let row; let i=index;"> 
+            <button mat-icon-button color="accent" (click)="startEdit(row)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
+              </button>     
+              <button mat-icon-button color="accent" (click)="deleteItem(row)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
+        </td>
+     </ng-container>
+  
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+</div>
+

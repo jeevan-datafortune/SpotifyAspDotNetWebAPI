@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () =>
     import('./playlist/playlist.module').then((a) => a.PlaylistModule),
   } ,
+  {
+    path: 'songs',
+    loadChildren: () =>
+    import('./songs/songs.module').then((a) => a.SongsModule),
+  } ,
   {path:'',pathMatch:'full',redirectTo:'artist'}
 ];
 

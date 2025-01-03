@@ -1,0 +1,38 @@
+<div class="container">
+    <h3 mat-dialog-title>New Playlist</h3>  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input type="hidden" [(ngModel)]="data.id" name="id"/>
+          <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.name" name="name" required >
+          <mat-error *ngIf="editForm.invalid && editForm.get('name').hasError('required')">Required</mat-error>       
+        </mat-form-field>        
+      </div>  
+      <div class="form">
+        <mat-form-field color="accent">        
+          <input matInput #input type="number" class="form-control" placeholder="Duration" [(ngModel)]="data.duration" name="duration" required >
+          <mat-error *ngIf="editForm.invalid && editForm.get('duration').hasError('required')">Required</mat-error>       
+        </mat-form-field>        
+      </div>  
+      <div class="form">
+        <mat-form-field color="accent">        
+          <input matInput #input class="form-control" placeholder="Uri" [(ngModel)]="data.uri" name="uri" required >
+          <mat-error *ngIf="editForm.invalid && editForm.get('uri').hasError('required')">Required</mat-error>       
+        </mat-form-field>        
+      </div>  
+      <div class="form">
+        <mat-form-field color="accent">        
+            <mat-select multiple placeholder="Artists" [(ngModel)]="data.selectedArtists" name="artists">
+              <mat-option *ngFor="let a of artists" [value]="a.id">{{ a.name }}</mat-option>
+            </mat-select>              
+        </mat-form-field>        
+      </div>  
+      <div class="form">
+        <input type="file" (change)="onFileSelected($event)" />    
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" (click)="onSubmit()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

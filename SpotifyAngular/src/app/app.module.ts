@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,9 +9,11 @@ import { httpInterceptor } from './httpInterceptor';
 import { ArtistModule } from './artist/artist.module';
 import { PlaylistModule } from './playlist/playlist.module';
 import { UserModule } from './user/user.module';
+import { SongsModule } from './songs/songs.module';
+
 @NgModule({
   declarations: [
-    AppComponent       
+    AppComponent   
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,8 @@ import { UserModule } from './user/user.module';
     HttpClientModule,   
     ArtistModule,
     PlaylistModule,
-    UserModule
+    UserModule,
+    SongsModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:httpInterceptor,multi:true
